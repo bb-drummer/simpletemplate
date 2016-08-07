@@ -1,0 +1,30 @@
+{
+  "name" : "bjoernbartels.earth/simpletemplate",
+  "description" : "simple php template system",
+  "version" : "0.0.1",
+  "require" : {
+    "php" : "^5.2 || ^7.0"
+  },
+  "license" : "Apache2.0",
+  "keywords" : [ "template", "system" ],
+  "extra" : {
+    "branch-alias" : {
+      "master" : "master-dev",
+      "0.0.1" : "1.0.x-dev"
+    }
+  },
+  "autoload" : {
+    "psr-0" : {
+      "SimpleTemplate" : [ "./src/" ]
+    },
+    "classmap" : [ "./src/" ]
+  },
+  "type" : "project",
+  "homepage" : "https://gitlab.bjoernbartels.earth/php/simpletemplate",
+  "authors" : [ {
+    "name" : "Björn Bartels",
+    "email" : "coding@bjoernbartels.earth",
+    "homepage" : "https://bjoernbartels.earth",
+    "role" : "Developer"
+  } ]
+}
