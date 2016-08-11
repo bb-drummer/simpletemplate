@@ -65,10 +65,15 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
     public $_sDomain = "default";
 
     /**
+     * text encoding (default: '')
+     * @var string
+     */
+    public $_encoding = "";
+
+	/**
      * Constructor function
      * 
      * @param array $tags
-	 * @return self
      */
     public function __construct ($tags = false)
     {
@@ -215,7 +220,6 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
         if ($this->_encoding != "")
         {
             $content = '<meta http-equiv="Content-Type" content="text/html; charset=' . $this->_encoding . '">' . "\n" . $content;
-            //$content = str_replace("</head>", '<meta http-equiv="Content-Type" content="text/html; charset='.$this->_encoding.'">'."\n".'</head>', $content);
         }
           
         if ($return)
@@ -251,11 +255,12 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
         $matches = array();
         preg_match_all("/".preg_quote($functionName, "/")."\\(([\\\"\\'])(.*?)\\1\\)/s", $template, $matches); 
 
-        $matches = array_values(array_unique($matches[2])); 
-        for ($a = 0; $a < count($matches); $a ++) { 
-            $template = preg_replace("/".preg_quote($functionName, "/")."\\([\\\"\\']".preg_quote($matches[$a], "/")."[\\\"\\']\\)/s", $this->translate($matches[$a], $this->_sDomain), $template);
+        $matches = array_values(array_unique($matches[2]));
+        $matchcount = count($matches);
+        for ($a = 0; $a < $matchcount; $a ++) { 
+            $template = preg_replace("/".preg_quote($functionName, "/")."\\([\\\"\\']".preg_quote($matches[$a], "/")."[\\\"\\']\\)/s", gettext($matches[$a]), $template);
         } 
-
+        // , this->_sDomain
         // Change back php placeholder 
         if (is_array($container)) { 
             foreach ($container as $x => $php_match) { 
@@ -266,4 +271,3 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
     }
      
 }
-?>
