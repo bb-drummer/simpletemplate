@@ -18,44 +18,44 @@ namespace SimpleTemplate;
 interface SimpleTemplateInterface
 {
 
-	/**
-	 * Set Templates placeholders and values
-	 *
-	 * With this method you can replace the placeholders
-	 * in the static templates with dynamic data.
-	 *
-	 * @param $which String 's' for Static or else dynamic
-	 * @param $needle String Placeholder
-	 * @param $replacement String Replacement String
-	 *
-	 * @return void
-	 */
-	public function set($which = 's', $needle, $replacement);
+    /**
+     * Set Templates placeholders and values
+     *
+     * With this method you can replace the placeholders
+     * in the static templates with dynamic data.
+     *
+     * @param $which String 's' for Static or else dynamic
+     * @param $needle String Placeholder
+     * @param $replacement String Replacement String
+     *
+     * @return void
+     */
+    public function set($which = 's', $needle, $replacement);
 
-	/**
-	 * Iterate internal counter by one
-	 *
-	 * @return void
-	 */
-	public function next();
+    /**
+     * Iterate internal counter by one
+     *
+     * @return void
+     */
+    public function next();
 
-	/**
-	 * Reset template data
-	 *
-	 * @return void
-	 */
-	public function reset();
+    /**
+     * Reset template data
+     *
+     * @return void
+     */
+    public function reset();
 
-	/**
-	 * Generate the template and
-	 * print/return it. (do translations sequentially to save memory!!!)
-	 *
-	 * @param $template string/file Template
-	 * @param $return bool Return or print template
-	 *
-	 * @return string complete Template string
-	 */
-	public function generate($template, $return = 0);
+    /**
+     * Generate the template and
+     * print/return it. (do translations sequentially to save memory!!!)
+     *
+     * @param $template string/file Template
+     * @param $return bool Return or print template
+     *
+     * @return string complete Template string
+     */
+    public function generate($template, $return = 0);
 
-	
+    
 }

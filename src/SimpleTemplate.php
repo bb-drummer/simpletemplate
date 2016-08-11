@@ -24,8 +24,8 @@ class SimpleTemplate extends SimpleTemplateAbstract
      * @param array $tags
      */
     public function __construct ($tags = false)
-	{
-		parent::__construct($tags);
-	} 
-	
+    {
+        parent::__construct($tags);
+    } 
+    
 } 

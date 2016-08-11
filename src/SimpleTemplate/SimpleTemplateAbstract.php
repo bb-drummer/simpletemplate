@@ -18,29 +18,29 @@ namespace SimpleTemplate;
 abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
 {
 
-	/**
+    /**
      * Needles (static)
      * @var array
      */
-    public $needles = array ();
+    public $needles = array();
 
     /**
      * Replacements (static)
      * @var array
      */
-    public $replacements = array ();
+    public $replacements = array();
 
     /**
      * dynamicNeedles (dynamic)
      * @var array
      */
-    public $dynamicNeedles = array ();
+    public $dynamicNeedles = array();
 
     /**
      * dynamicReplacements (dynamic)
      * @var array
      */
-    public $dynamicReplacements = array ();
+    public $dynamicReplacements = array();
 
     /**
      * Dynamic counter
@@ -52,7 +52,7 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
      * Tags array (for dynamic blocks);
      * @var array
      */
-    public $tags = array (
+    public $tags = array(
         'static' => '{%s}', 
         'start' => '<!-- BEGIN:BLOCK -->', 
         'end' => '<!-- END:BLOCK -->'
@@ -70,7 +70,7 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
      */
     public $_encoding = "";
 
-	/**
+    /**
      * Constructor function
      * 
      * @param array $tags
@@ -176,12 +176,9 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
     public function generate($template, $return = 0)
     {
         //check if the template is a file or a string
-        if (!@ is_file($template))
-        {
+        if (!@ is_file($template)) {
             $content = & $template; //template is a string (it is a reference to save memory!!!)
-        }
-        else
-        {
+        } else {
             $content = implode("", file($template)); //template is a file
         }
 
@@ -222,10 +219,11 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
             $content = '<meta http-equiv="Content-Type" content="text/html; charset=' . $this->_encoding . '">' . "\n" . $content;
         }
           
-        if ($return)
+        if ($return) {
             return $content;
-        else
+        } else {
             echo $content;
+        }
     }
 
     /** 

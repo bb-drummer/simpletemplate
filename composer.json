@@ -1,11 +1,10 @@
 {
   "name" : "bjoernbartels.earth/simpletemplate",
   "description" : "simple php template system",
-  "version" : "0.0.1",
   "require" : {
     "php" : "^5.2 || ^7.0"
   },
-  "license" : "Apache2.0",
+  "license" : "Apache-2.0",
   "keywords" : [ "template", "system" ],
   "extra" : {
     "branch-alias" : {
