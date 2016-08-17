@@ -4,8 +4,10 @@
 before_script:
 - apt-get update -y -q;
 - apt-get upgrade -y -q;
-- apt-get install git unzip libz-dev libbz2-dev -y;
+- apt-get install git unzip libicu-dev libz-dev libbz2-dev -y;
+- docker-php-ext-install intl;
 - docker-php-ext-install zip;
+- docker-php-ext-install gettext;
 - curl -sS https://getcomposer.org/installer | php
 - php composer.phar --version
 - curl -o phpunit https://phar.phpunit.de/phpunit-5.5.0.phar
