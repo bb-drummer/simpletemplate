@@ -271,7 +271,7 @@ class SimpleTemplateTest extends TestCase
     	->next()
     	;
     	
-    	$templateFilepath = "tests/data/file.tpl";
+    	$templateFilepath = $GLOBALS["projectRoot"] . "/tests/data/file.tpl";
     	$generatedContent = $tpl->generate($templateFilepath, true);
     	$this->assertContains("my-value", $generatedContent);
     	$this->assertContains("value-1", $generatedContent);
