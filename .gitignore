@@ -1,0 +1,78 @@
+## 
+## ignore ZendStudio/Eclipse files
+##
+.settings
+.buildpath
+.project
+
+## 
+## ignore ZendServer files
+##
+deployment.properties
+deployment.xml
+
+## 
+## ignore sone project related and ZendFramework(2) files and folders
+##
+*cache*
+vendor*
+themes/
+data/
+components/
+public/test-coverage
+public/assets
+public/application-assets
+public/js/*/*
+public/css/*/*
+*.local.php
+module/module-*
+module/Admin*
+module/UIComponents*
+module/SlmLocale*
+extras*
+
+
+## 
+## ignore (php) composer files
+##
+composer.lock
+composer.phar
+
+##
+## ignore nodeJS stuff
+##
+node_modules
+npm-debug.log
+bower_components
+dist
+build
+build-js
+merge
+
+##
+## ignore some apple stuff
+## 
+.DS_*
+.AppleDouble
+.LSOverride
+
+# Icon must ends with two \r.
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# others
+*.swp
+*.bak
+*.tmp
+*.save
+*.report*
+*.vagrant
+.gitignore.build
+

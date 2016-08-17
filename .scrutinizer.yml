@@ -1,0 +1,23 @@
+checks:
+    php: true
+    javascript: true
+filter:
+    paths:
+        - src/*
+    excluded_paths:
+        - tests/*
+        - vendor/*
+coding_style:
+    php: {  }
+build:
+    environment:
+        php: '7.0'
+        timezone: 'Europe/Berlin'
+    tests:
+        override:
+            -
+                command: './vendor/bin/phpunit -c ./tests/phpunit.xml --coverage-clover=simpletemplate.clover'
+                coverage:
+                    file: 'simpletemplate.clover'
+                    format: 'php-clover'
+

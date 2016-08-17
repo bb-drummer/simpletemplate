@@ -2,7 +2,8 @@
   "name" : "bjoernbartels.earth/simpletemplate",
   "description" : "simple php template system",
   "require" : {
-    "php" : "^5.2 || ^7.0"
+    "php" : "^5.6 || ^7.0",
+    "phpunit/phpunit" : ">=5.1.4"
   },
   "license" : "Apache-2.0",
   "keywords" : [ "template", "system" ],
@@ -13,7 +14,7 @@
     }
   },
   "autoload" : {
-    "psr-0" : {
+    "psr-2" : {
       "SimpleTemplate" : [ "./src/" ]
     },
     "classmap" : [ "./src/" ]

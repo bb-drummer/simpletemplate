@@ -75,11 +75,11 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
      * 
      * @param array $tags
      */
-    public function __construct($tags = false)
+    public function __construct($tags = null)
     {
         if (is_array($tags))
         {
-            $this->tags = $tags;
+            $this->tags = array_merge($this->tags, $tags);
         }
         
         $this->setEncoding("");
@@ -97,6 +97,18 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
     {
         $this->_sDomain = $sDomain;
         return $this;
+    }
+    
+    /**
+     * getDomain
+     *
+     * Gets the gettext domain to use for translations in a template
+     *
+     * @return string
+     */    
+    public function getDomain()
+    {
+        return $this->_sDomain;
     }
     
     /**
@@ -186,7 +198,7 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
         
         //replace i18n strings before replacing other placeholders 
         $this->replacei18n($content, "i18n"); 
-        $this->replacei18n($content, "trans"); 
+        $this->replacei18n($content, "translate"); 
 
         //if content has dynamic blocks 
         if (preg_match("/^.*".preg_quote($this->tags['start'], "/").".*?".preg_quote($this->tags['end'], "/").".*$/s", $content)) { 

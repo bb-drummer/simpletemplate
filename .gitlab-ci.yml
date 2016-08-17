@@ -1,0 +1,45 @@
+# shell-runner configuration
+
+# prepare gitlab-ci
+before_script:
+- php -m
+- php -d memory_limit=-1 composer.phar install
+
+# include services
+# define types/stages
+types:
+- test
+- build
+- deploy
+- cleanup
+
+# define jobs
+
+# testing with php 5.x jobs
+test-php5_job:
+  type: test
+  image: php:5.6
+  script:
+  - php -d memory_limit=-1 vendor/bin/phpunit --colors --debug --configuration ./tests/phpunit.xml --coverage-text
+  allow_failure: false
+
+# testing with php 7.x jobs
+test-php7_job:
+  type: test
+  image: php:7.0
+  script:
+  - php -d memory_limit=-1 vendor/bin/phpunit --colors --debug --configuration ./tests/phpunit.xml --coverage-text
+  allow_failure: false
+
+build_job:
+  type: build
+  image: php:5.6
+  script:
+  - php -d memory_limit=-1 vendor/bin/phpunit --colors --debug --configuration ./tests/phpunit.xml --coverage-text
+  allow_failure: false
+
+trigger:
+  type: deploy
+  image: php:5.6
+  script:
+  - php -d memory_limit=-1 vendor/bin/phpunit --colors --debug --configuration ./tests/phpunit.xml --coverage-text
