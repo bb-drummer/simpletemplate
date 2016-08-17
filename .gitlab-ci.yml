@@ -2,8 +2,16 @@
 
 # prepare gitlab-ci
 before_script:
+- apt-get update -y -q;
+- apt-get upgrade -y -q;
+- apt-get install git unzip libz-dev libbz2-dev -y;
+- docker-php-ext-install zip;
+- curl -sS https://getcomposer.org/installer | php
+- php composer.phar --version
+- curl -o phpunit https://phar.phpunit.de/phpunit.phar
+- chmod +x phpunit
+- ./phpunit --version
 - php -m
-- curl -L -O http://getcomposer.org/composer.phar
 - php -d memory_limit=-1 composer.phar install
 
 # include services
