@@ -3,6 +3,7 @@
 # prepare gitlab-ci
 before_script:
 - php -m
+- wget http://getcomposer.org/composer.phar
 - php -d memory_limit=-1 composer.phar install
 
 # include services
