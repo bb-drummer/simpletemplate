@@ -8,7 +8,7 @@ before_script:
 - docker-php-ext-install zip;
 - curl -sS https://getcomposer.org/installer | php
 - php composer.phar --version
-- curl -o phpunit https://phar.phpunit.de/phpunit.phar
+- curl -o phpunit https://phar.phpunit.de/phpunit-5.5.0.phar
 - chmod +x phpunit
 - ./phpunit --version
 - php -m
