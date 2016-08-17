@@ -1,4 +1,4 @@
-# SimpleTable
+# SimpleTemplate
 
 ## Introduction
 
@@ -14,14 +14,14 @@ a simple php template class to build HTML markup progrmatically
 
 Just checkout the repository and use the classes as you desire...
 
-    git clone https://gitlab.bjoernbartels.earth/php/simpletable.git
+    git clone https://gitlab.bjoernbartels.earth/php/simpletemplate.git
 
 
 Another alternative for downloading the project is to grab it via `curl`, and
 then pass it to `tar`:
 
     cd my/project/dir
-    curl -L https://gitlab.bjoernbartels.earth/php/simpletable/repository/archive.tar.gz?ref=master | tar xz --strip-components=1
+    curl -L https://gitlab.bjoernbartels.earth/php/simpletemplate/repository/archive.tar.gz?ref=master | tar xz --strip-components=1
 
 
 
