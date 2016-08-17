@@ -21,13 +21,20 @@ Another alternative for downloading the project is to grab it via `curl`, and
 then pass it to `tar`:
 
     cd my/project/dir
-    curl -#L https://gitlab.bjoernbartels.earth/php/simpletable/repository/archive.tar.gz?ref=master | tar xz --strip-components=1
+    curl -L https://gitlab.bjoernbartels.earth/php/simpletable/repository/archive.tar.gz?ref=master | tar xz --strip-components=1
 
 
 
 ## Status
 
-...
+[![Build Status](https://travis-ci.org/bb-drummer/simpletemplate.svg?branch=master)](https://travis-ci.org/bb-drummer/simpletemplate)
+
+[![build status](https://gitlab.com/php.bjoernbartels.earth/simpletemplate/badges/master/build.svg)](https://gitlab.com/php.bjoernbartels.earth/simpletemplate/commits/master)
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bb-drummer/simpletemplate/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bb-drummer/simpletemplate/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/bb-drummer/simpletemplate/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/bb-drummer/simpletemplate/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/bb-drummer/simpletemplate/badges/build.png?b=master)](https://scrutinizer-ci.com/g/bb-drummer/simpletemplate/build-status/master)
+
 
 
 ## LICENSE
