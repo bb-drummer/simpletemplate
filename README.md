@@ -2,7 +2,7 @@
 
 ## Introduction
 
-a basic table generator class to build HTML table markup progrmatically by applying a simple table configuration array
+a simple php template class to build HTML markup progrmatically
 
 
 ### TODO
