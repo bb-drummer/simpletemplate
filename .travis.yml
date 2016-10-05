@@ -9,3 +9,7 @@ before_script:
   - php composer.phar install
 
 script: php -d memomry_limit=-1 ./vendor/bin/phpunit -c ./tests/phpunit.xml
+
+addons:
+    code_climate:
+        repo_token: 932d10efc1db88cb874d169241b276ede3ecf72b5e053d88e3543802474cbf89
