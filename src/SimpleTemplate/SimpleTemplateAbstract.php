@@ -2,54 +2,59 @@
 /**
  * simple template engine class abstract
  *
- * @package     SimpleTemplate
- * @author      Björn Bartels <coding@bjoernbartels.earth>
- * @link        https://gitlab.bjoernbartels.earth/groups/zf2
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
- * @copyright   copyright (c) 2016 Björn Bartels <coding@bjoernbartels.earth>
+ * @package   SimpleTemplate
+ * @author    Björn Bartels <coding@bjoernbartels.earth>
+ * @link      https://gitlab.bjoernbartels.earth/groups/zf2
+ * @license   http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
+ * @copyright copyright (c) 2016 Björn Bartels <coding@bjoernbartels.earth>
  */
 
 namespace SimpleTemplate;
 
 /**
  * light template mechanism abstract
- *
  */
 abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
 {
 
     /**
      * Needles (static)
+     *
      * @var array
      */
     public $needles = array();
 
     /**
      * Replacements (static)
+     *
      * @var array
      */
     public $replacements = array();
 
     /**
      * dynamicNeedles (dynamic)
+     *
      * @var array
      */
     public $dynamicNeedles = array();
 
     /**
      * dynamicReplacements (dynamic)
+     *
      * @var array
      */
     public $dynamicReplacements = array();
 
     /**
      * Dynamic counter
+     *
      * @var int
      */
     public $dynamicContent = 0;
 
     /**
      * Tags array (for dynamic blocks);
+     *
      * @var array
      */
     public $tags = array(
@@ -60,12 +65,14 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
 
     /**
      * gettext domain (default: 'default')
+     *
      * @var string
      */
     public $_sDomain = "default";
 
     /**
      * text encoding (default: '')
+     *
      * @var string
      */
     public $_encoding = "";
@@ -73,12 +80,11 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
     /**
      * Constructor function
      * 
-     * @param array $tags
+     * @param array|null $tags
      */
     public function __construct($tags = null)
     {
-        if (is_array($tags))
-        {
+        if (is_array($tags)) {
             $this->tags = array_merge($this->tags, $tags);
         }
         
@@ -90,7 +96,7 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
      *
      * Sets the gettext domain to use for translations in a template
      *
-     * @param $sDomain    string    Sets the domain to use for template translations
+     * @param  $sDomain    string    Sets the domain to use for template translations
      * @return self
      */    
     public function setDomain($sDomain)
@@ -125,8 +131,7 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
      */
     public function set($which = 's', $needle, $replacement)
     {
-        if ($which == 's')
-        { // static
+        if ($which == 's') { // static
             $this->needles[] = sprintf($this->tags['static'], $needle);
             $this->replacements[] = $replacement;
 
@@ -142,7 +147,7 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
     /**
      * Sets an encoding for the template's head block.
      *
-     * @param $encoding string Encoding to set
+     * @param  $encoding string Encoding to set
      * @return self
      */    
     public function setEncoding($encoding)
@@ -211,23 +216,22 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
 
             //start block 
             $content .= str_replace($this->needles, $this->replacements, $pieces[0][0]); 
-            unset ($pieces[0][0]); 
+            unset($pieces[0][0]); 
 
             //generate dynamic blocks 
             for ($a = 0; $a < $this->dynamicContent; $a++) { 
                 $content .= str_replace($this->dynamicNeedles[$a], $this->dynamicReplacements[$a], $pieces[1][0]); 
             } 
-            unset ($pieces[1][0]); 
+            unset($pieces[1][0]); 
 
             //end block 
             $content .= str_replace($this->needles, $this->replacements, $pieces[2][0]); 
-            unset ($pieces[2][0]);
+            unset($pieces[2][0]);
         } else { 
             $content = str_replace($this->needles, $this->replacements, $content); 
         }
         
-        if ($this->_encoding != "")
-        {
+        if ($this->_encoding != "") {
             $content = '<meta http-equiv="Content-Type" content="text/html; charset='.$this->_encoding.'">'."\n".$content;
         }
           
@@ -243,11 +247,12 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
      * 
      * Replaces a named function with the translated variant 
      * 
-     * @param $template string Contents of the template to translate (it is reference to save memory!!!) 
-     * @param $functionName string Name of the translation function (e.g. i18n) 
+     * @param  $template string Contents of the template to translate (it is reference to save memory!!!) 
+     * @param  $functionName string Name of the translation function (e.g. i18n) 
      * @return self
      */ 
-    public function replacei18n(& $template, $functionName) { 
+    public function replacei18n(& $template, $functionName) 
+    { 
 
         // Be sure that php code stays unchanged 
         $php_matches = array();
@@ -256,7 +261,7 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
             $x = 0; 
             foreach ($php_matches[0] as $php_match) { 
                 $x++; 
-                $template = str_replace($php_match , "{PHP#".$x."#PHP}", $template); 
+                $template = str_replace($php_match, "{PHP#".$x."#PHP}", $template); 
                 $container[$x] = $php_match; 
             }
         }
@@ -274,7 +279,7 @@ abstract class SimpleTemplateAbstract implements SimpleTemplateInterface
         // Change back php placeholder 
         if (is_array($container)) { 
             foreach ($container as $x => $php_match) { 
-                $template = str_replace("{PHP#".$x."#PHP}" , $php_match, $template); 
+                $template = str_replace("{PHP#".$x."#PHP}", $php_match, $template); 
             } 
         }
         return $this;

@@ -23,6 +23,7 @@ public/assets
 public/application-assets
 public/js/*/*
 public/css/*/*
+public/.reports/*
 *.local.php
 module/module-*
 module/Admin*
